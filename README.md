@@ -129,3 +129,5 @@ Aplicación con ejemplos routes, services y librerias externas
   ],
   }
 ``` 
+
+[Guia para instalación Angular2-material](https://github.com/angular/material2/blob/master/GETTING_STARTED.md)
