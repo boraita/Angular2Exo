@@ -3,9 +3,11 @@
 </h1>
 <app-nuevo-component></app-nuevo-component>-->
 <h1>{{title}}</h1>
-  <nav>
-    <a routerLink="" routerLinkActive="active">Formularios</a>
-    <a routerLink="/tareas">Tareas</a>
-    <!--<a routerLink="/heroes" routerLinkActive="active">Heroes</a>-->
-  </nav>
-  <router-outlet></router-outlet>
+<nav>
+  <md-grid-list cols="4" rowHeight="100px" [style.background]="'#333'">
+    <md-grid-tile><img src="https://exolever.s3.amazonaws.com/static/assets/images/top_nav/logoExOLEVER.png"></md-grid-tile>
+    <md-grid-tile><a routerLink="" routerLinkActive="active"><button md-raised-button>Formularios</button></a></md-grid-tile>
+    <md-grid-tile><a routerLink="/tareas"><button md-raised-button>Tareas</button></a></md-grid-tile>
+  </md-grid-list>
+</nav>
+<router-outlet></router-outlet>
