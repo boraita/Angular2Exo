@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+import { MdCoreModule } from '@angular/material/core';
 
 // Componentes declarados de este nivel
 import { AppComponent } from './app.component';
@@ -27,6 +29,8 @@ import { GestorTareasModule } from './gestor-tareas/gestor-tareas.module';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    MaterialModule.forRoot(),
+    MdCoreModule,
     AppRoutingModule,
     GestorTareasModule
   ],
