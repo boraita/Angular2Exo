@@ -7,10 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GestorTareasComponent } from './gestor-tareas.component';
 import { GestorTareasRoutingModule } from './gestor-tareas.routes';
+import { OrderByPipe } from './order-by.pipe';
 
 @NgModule({
   imports: [CommonModule, MaterialModule.forRoot(), FormsModule, ReactiveFormsModule, GestorTareasRoutingModule],
-  declarations: [GestorTareasComponent],
+  declarations: [GestorTareasComponent, OrderByPipe],
   providers: [GestorTareasService],
 
 })

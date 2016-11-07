@@ -16,7 +16,7 @@ export class GestorTareasComponent implements OnInit {
   complexForm: FormGroup;
 
   constructor(private tareasServicio: GestorTareasService, fbTareas: FormBuilder) {
-    let fecha = new Date().toISOString().slice(0, 16);;
+    let fecha = new Date().toISOString().slice(0, 16);
     this.complexForm = fbTareas.group({
     'nombre': ['', Validators.compose([Validators.required, Validators.minLength(5)])],
     'diaInicio': [fecha, Validators.required],
@@ -26,21 +26,53 @@ export class GestorTareasComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.tareas = this.tareasServicio.getTareas$();
+    this.tareasServicio.getTareas().subscribe(res => {
+        // durante la suscripción se obtienen y transforman los datos
+        if (res.status === 200) {
+          let arrayTareas = res.json() || [];
+          this.tareas = arrayTareas.tareas;
+        }else {
+          console.error(JSON.stringify(res));
+        }
+      });
   }
 
+// Forma local
+// submitForm(value: any): void {
+//   value.id = (new Date().getMilliseconds());
+//     this.tareas.push(value);
+//   }
+// relizado(value: any): void {
+//   let index = this.tareas.indexOf(value, 0);
+//   if (index > -1) {
+//     this.tareas.splice(index, 1);
+//   }
+//   }
+// Forma REST
 // Insertar objeto en el array
 submitForm(value: any): void {
   value.id = (new Date().getMilliseconds());
+  this.tareasServicio.addTarea(value).subscribe( res => {
+    if  (res.status === 200) {
+        let arrayTareas = res.json() || [];
+        this.tareas = arrayTareas.tareas;
+    }else {
+          console.error(JSON.stringify(res));
+        }
+  });
     this.tareas.push(value);
   }
 // Quitar objeto del array
 relizado(value: any): void {
-  let index = this.tareas.indexOf(value, 0);
-  if (index > -1) {
-    this.tareas.splice(index, 1);
-  }
-  }
-
+ this.tareasServicio.delTarea(value.id).subscribe(res => {
+        // durante la suscripción se obtienen y transforman los datos
+        if (res.status === 200) {
+          let arrayTareas = res.json() || [];
+          this.tareas = arrayTareas.tareas;
+        }else {
+          console.error(JSON.stringify(res));
+        }
+      });
+}
 
 }

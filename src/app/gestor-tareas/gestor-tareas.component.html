@@ -29,7 +29,7 @@
 
   <!-- .................Lista de tareas........................ -->
 <md-grid-list cols="4" class="col-md-12">
-  <md-grid-tile *ngFor="let item of tareas">
+  <md-grid-tile *ngFor="let item of (tareas | orderBy: ['prioridad'])">
     <md-card>
       <md-card-title>{{item.nombre}}</md-card-title>   
       <md-card-content>
