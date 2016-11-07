@@ -53,14 +53,10 @@ export class GestorTareasComponent implements OnInit {
 submitForm(value: any): void {
   value.id = (new Date().getMilliseconds());
   this.tareasServicio.addTarea(value).subscribe( res => {
-    if  (res.status === 200) {
-        let arrayTareas = res.json() || [];
-        this.tareas = arrayTareas.tareas;
-    }else {
-          console.error(JSON.stringify(res));
-        }
+    if  (res.status === 200){
+        this.tareas = res.json() || [];
+    }
   });
-    this.tareas.push(value);
   }
 // Quitar objeto del array
 relizado(value: any): void {
