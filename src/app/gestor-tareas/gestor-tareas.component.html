@@ -1,7 +1,7 @@
 <p>
   gestor-tareas works!
 </p>
-<div class="jumbotron">
+<div class="jumbotron col-md-2 col-md-offset-5">
     <h2>Formulario control datos reactivamente</h2>
     <!-- Right of the bat, we no longer declare a local variable but use the formGroup directive and set it the complexForm object we defined in the constructor. Throughout the form, we will reference the complexForm root object as can be seen in the submitForm function.-->
     <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
@@ -11,17 +11,24 @@
         <input class="form-control" type="text" placeholder="Nombre de tarea" [formControl]="complexForm.controls['nombre']">
       </div>
       <div class="form-group">
-        <label>Prioridad</label>
-        <input class="form-control" type="date" placeholder="Prioridad de tarea" [formControl]="complexForm.controls['prioridad']">
+        <label>Fecha inicio: </label>
+        <input class="form-control" type="date" placeholder="Fecha de inicio" [formControl]="complexForm.controls['diaInicio']">
       </div>
       <div class="form-group">
-        <label>Gender</label>
+        <label>Fecha Fin: </label>
+        <input class="form-control" type="date" placeholder="Fecha de fin" [formControl]="complexForm.controls['diaFin']">
       </div>
+      <div class="form-group">
+        <label>Prioridad: </label>
+        <input class="form-control" type="number" placeholder="Prioridad" [formControl]="complexForm.controls['prioridad']">
+        <progress class="form-control" value="{{complexForm.value.prioridad*10}}" max="100">{{complexForm.value.prioridad*10}} %</progress>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
 
   <!-- .................Lista de tareas........................ -->
-<md-grid-list cols="4">
+<md-grid-list cols="4" class="col-md-12">
   <md-grid-tile *ngFor="let item of tareas">
     <md-card>
       <md-card-title>{{item.nombre}}</md-card-title>   
@@ -31,7 +38,7 @@
             <p>Prioridad: {{item.prioridad}}</p>
       </md-card-content>
       <md-card-actions>
-            <button md-button>Realizado</button>
+            <button md-button (click)=relizado(item)>Realizado</button>
       </md-card-actions>
     </md-card>
   </md-grid-tile>

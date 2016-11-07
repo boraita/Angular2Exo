@@ -16,10 +16,11 @@ export class GestorTareasComponent implements OnInit {
   complexForm: FormGroup;
 
   constructor(private tareasServicio: GestorTareasService, fbTareas: FormBuilder) {
+    let fecha = new Date().toISOString().slice(0, 16);;
     this.complexForm = fbTareas.group({
     'nombre': ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-    'diaInicio': [Date.now, Validators.required],
-    'diaFin': [Date.now, Validators.required],
+    'diaInicio': [fecha, Validators.required],
+    'diaFin': [fecha, Validators.required],
     'prioridad': [0, Validators.required]
   });
    }
@@ -28,10 +29,17 @@ export class GestorTareasComponent implements OnInit {
     this.tareas = this.tareasServicio.getTareas$();
   }
 
-
+// Insertar objeto en el array
 submitForm(value: any): void {
-    console.log('Reactive Form Data: ');
-    console.log(value.nombre);
+  value.id = (new Date().getMilliseconds());
+    this.tareas.push(value);
+  }
+// Quitar objeto del array
+relizado(value: any): void {
+  let index = this.tareas.indexOf(value, 0);
+  if (index > -1) {
+    this.tareas.splice(index, 1);
+  }
   }
 
 
