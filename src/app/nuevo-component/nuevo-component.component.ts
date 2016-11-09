@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevoComponentComponent implements OnInit {
 
+  private normalForm: boolean;
+  private reactiveForm: boolean;
   constructor() { }
 
   ngOnInit() {
+
+    this.normalForm = true;
+    this.reactiveForm = true;
   }
 
+  activesForm(form) {
+    if (form === 'normal') {
+      if (this.normalForm) {
+        this.normalForm = false;
+      }else {
+        this.normalForm = true;
+      }
+    }else {
+      if (this.reactiveForm) {
+        this.reactiveForm = false;
+      } else {
+        this.reactiveForm = true;
+      }
+    }
+  }
 }

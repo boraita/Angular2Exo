@@ -1,9 +1,18 @@
+
 <div class="container">
-  <div class="col-md-6">
+  <div class="col-md-12">
+    <md-checkbox [checked]="normalForm" (change)="activesForm('normal')">
+        Normal
+    </md-checkbox>
+    <md-checkbox [checked]="reactiveForm" (change)="activesForm('reactive')">
+        Reactive
+    </md-checkbox>
+  </div>
+  <div class="col-md-6" *ngIf="normalForm" >
     <div><h1>Normal</h1></div>
     <app-simple-form></app-simple-form>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" *ngIf="reactiveForm">
     <div><h1>Reactivo</h1></div>
     <app-dificil-form></app-dificil-form>
   </div>
