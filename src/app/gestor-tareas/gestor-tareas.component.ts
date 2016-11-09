@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Tarea } from './gestor-tareas-model';
 import { GestorTareasService } from './gestor-tareas.service';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-gestor-tareas',
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class GestorTareasComponent implements OnInit {
   tareas: Tarea[];
-  tareas$: Observable<Tarea[]>;
+  // tareas$: Observable<Tarea[]>;
   complexForm: FormGroup;
 
   constructor(private tareasServicio: GestorTareasService, fbTareas: FormBuilder) {
@@ -53,7 +53,7 @@ export class GestorTareasComponent implements OnInit {
 submitForm(value: any): void {
   value.id = (new Date().getMilliseconds());
   this.tareasServicio.addTarea(value).subscribe( res => {
-    if  (res.status === 200){
+    if  (res.status === 200) {
         this.tareas = res.json() || [];
     }
   });
