@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-simple-form',
@@ -7,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimpleFormComponent implements OnInit {
 
+  @Output() detailsForm = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
   submitForm(form: any): void {
-    console.log('Form Data: ');
-    console.log(form);
+    console.log('Normal Form Data', form);
+    this.detailsForm.emit({
+      value: form
+    });
   }
 }

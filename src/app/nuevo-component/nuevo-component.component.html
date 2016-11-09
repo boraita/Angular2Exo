@@ -10,11 +10,11 @@
   </div>
   <div class="col-md-6" *ngIf="normalForm" >
     <div><h1>Normal</h1></div>
-    <app-simple-form></app-simple-form>
+    <app-simple-form (detailsForm)="descriptionForm($event)"></app-simple-form>
   </div>
   <div class="col-md-6" *ngIf="reactiveForm">
     <div><h1>Reactivo</h1></div>
-    <app-dificil-form></app-dificil-form>
+    <app-dificil-form (detailsForm)="descriptionForm($event)"></app-dificil-form>
   </div>
 </div>
 

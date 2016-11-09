@@ -32,4 +32,8 @@ export class NuevoComponentComponent implements OnInit {
       }
     }
   }
+
+  descriptionForm($event) {
+    console.log('Padre: ', JSON.stringify($event));
+  }
 }
