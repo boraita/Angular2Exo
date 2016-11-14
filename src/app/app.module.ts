@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { MdCoreModule } from '@angular/material/core';
 
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+
 // Componentes declarados de este nivel
 import { AppComponent } from './app.component';
 import { NuevoComponentComponent } from './nuevo-component/nuevo-component.component';
@@ -14,6 +16,7 @@ import { AppRoutingModule } from './app.routes';
 
 // Modulos del componente
 import { GestorTareasModule } from './gestor-tareas/gestor-tareas.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   // Componentes que se deen utilizar
@@ -21,7 +24,8 @@ import { GestorTareasModule } from './gestor-tareas/gestor-tareas.module';
     AppComponent,
     NuevoComponentComponent,
     SimpleFormComponent,
-    DificilFormComponent
+    DificilFormComponent,
+    LoginComponent
   ],
   // Modulos necesarios para la ejecución de las funciones
   imports: [
@@ -35,7 +39,7 @@ import { GestorTareasModule } from './gestor-tareas/gestor-tareas.module';
     GestorTareasModule
   ],
   // Declaración de servicios (Proveedores)
-  providers: [],
+  providers: [AUTH_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
