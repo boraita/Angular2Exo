@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tarea } from './gestor-tareas-model';
 import { GestorTareasService } from './gestor-tareas.service';
 // import { Observable } from 'rxjs/Observable';
+import { Restangular } from 'ng2-restangular';
 
 @Component({
   selector: 'app-gestor-tareas',
@@ -15,7 +16,7 @@ export class GestorTareasComponent implements OnInit {
   // tareas$: Observable<Tarea[]>;
   complexForm: FormGroup;
 
-  constructor(private tareasServicio: GestorTareasService, fbTareas: FormBuilder) {
+  constructor(private tareasServicio: GestorTareasService, fbTareas: FormBuilder, public restangular: Restangular) {
     let fecha = new Date().toISOString().slice(0, 16);
     this.complexForm = fbTareas.group({
     'nombre': ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -26,15 +27,21 @@ export class GestorTareasComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.tareasServicio.getTareas().subscribe(res => {
-        // durante la suscripción se obtienen y transforman los datos
-        if (res.status === 200) {
-          let arrayTareas = res.json() || [];
-          this.tareas = arrayTareas.tareas;
-        }else {
-          console.error(JSON.stringify(res));
-        }
-      });
+
+    this.tareasServicio.getTareas().subscribe(response => {
+      this.tareas = response;
+      console.log(response.headers);
+    });
+
+    // this.tareasServicio.getTareas().subscribe(res => {
+    //     // durante la suscripción se obtienen y transforman los datos
+    //     if (res.status === 200) {
+    //       let arrayTareas = res.json() || [];
+    //       this.tareas = arrayTareas.tareas;
+    //     }else {
+    //       console.error(JSON.stringify(res));
+    //     }
+    //   });
   }
 
 // Forma local

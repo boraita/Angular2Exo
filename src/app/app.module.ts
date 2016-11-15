@@ -5,7 +5,9 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { MdCoreModule } from '@angular/material/core';
 
-import { AUTH_PROVIDERS } from 'angular2-jwt';
+// Librerias externas
+// import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { RestangularModule } from 'ng2-restangular';
 
 // Componentes declarados de este nivel
 import { AppComponent } from './app.component';
@@ -36,10 +38,15 @@ import { LoginComponent } from './login/login.component';
     MaterialModule.forRoot(),
     MdCoreModule,
     AppRoutingModule,
-    GestorTareasModule
+    GestorTareasModule,
+    RestangularModule.forRoot((RestangularProvider) => {
+        RestangularProvider.setBaseUrl('http://localhost:3000');
+        RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer UDXPx-Xko0w4BRKajozCVy20X11MRZs1'});
+      }
+    )
   ],
   // Declaración de servicios (Proveedores)
-  providers: [AUTH_PROVIDERS],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

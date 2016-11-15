@@ -6,12 +6,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SecurityService } from '../security.service';
+// import { SecurityService } from '../security.service';
 
 // Nuevas rutas
 import { GestorTareasComponent } from './gestor-tareas.component';
 // definir las rutas
-const routes: Routes = [{ path: 'tareas', component: GestorTareasComponent, canActivate: [SecurityService] }];
+const routes: Routes = [{ path: 'tareas', component: GestorTareasComponent }];
 // Para realizar el lazy loaders
 // const lazyRoutes: Routes = [{ path: 'tareas',  component: GestorTareasModule}];
 // configurar el modulo

@@ -1,8 +1,11 @@
 import { GestorTareasModel, Tarea } from './gestor-tareas-model';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
 // Importar la clase Observable de la librería Reactive Extensions
 import { Observable }     from 'rxjs/Observable';
+
+import { Restangular } from 'ng2-restangular';
 /**
  * Programación reactiva con observables
  */
@@ -35,15 +38,20 @@ export class GestorTareasService {
   // Comunicación de elemenos mediantes Observable
   // private tareas$: Subject<Tarea[]> = new Subject<Tarea[]>();
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private restangular: Restangular) { }
 
   // getTareas$(): Tarea[] {
   //   return this.tareas;
   // }
 
-  getTareas(): Observable<Response> {
+  getTareas() {
     // El resto de llamadas son simples copias de las anteriores
-        return this.http.get('http://localhost:3000/tareas');
+        // return this.http.get('http://localhost:3000/tareas');
+    //  return this.restangular.get('tareas');
+    return this.restangular.all('tareas').getList();
+    //  return tareas.getList().subscribe(accounts => {
+    //   tareas = accounts;
+    // });
   }
 
   delTarea(id: number): Observable<Response> {
