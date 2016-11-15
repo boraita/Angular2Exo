@@ -11,7 +11,9 @@ import { NuevoComponentComponent } from './nuevo-component/nuevo-component.compo
 import { LoginComponent } from './login/login.component';
 
 // definir las rutas
-const routes: Routes = [{ path: '', component: NuevoComponentComponent }, { path: 'login', component: LoginComponent }];
+const routes: Routes = [
+  { path: '', component: NuevoComponentComponent },
+  { path: 'login', component: LoginComponent }];
 // Para realizar el lazy loaders
 // const lazyRoutes: Routes = [{ path: 'tareas',  component: GestorTareasModule}];
 // configurar el modulo
