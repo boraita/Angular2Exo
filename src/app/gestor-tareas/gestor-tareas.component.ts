@@ -78,4 +78,8 @@ relizado(value: any): void {
       });
 }
 
+  trackByFn(index, item) {
+      return index; // or item.id
+  }
+
 }
