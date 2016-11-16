@@ -46,8 +46,17 @@ submitForm(value: any): void {
   }
 // Quitar objeto del array
 relizado(value: any): void {
-
-console.log(this.tareasServicio.delTarea(value.id));
+// Borramos el elemento de la lista que se ha eliminado en la base de datos
+if (this.tareasServicio.delTarea(value.id)) {
+  for (let i = 0 ; i < this.tareas.length; i++) {
+        if ( this.tareas[i].id === value.id) {
+          let index = this.tareas.indexOf(this.tareas[i], 0);
+          if (index > -1) {
+            this.tareas.splice(index, 1);
+          }
+        }
+      }
+}
 
 //  .subscribe(res => {
 //         // durante la suscripción se obtienen y transforman los datos
