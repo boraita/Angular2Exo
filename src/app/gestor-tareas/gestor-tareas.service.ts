@@ -56,7 +56,9 @@ export class GestorTareasService {
 
   delTarea(id: number): Observable<Response> {
     // El resto de llamadas son simples copias de las anteriores
-        return this.http.delete('http://localhost:3000/tareas/' + id);
+        // return this.http.delete('http://localhost:3000/tareas/' + id);
+    // Con restangular
+        return this.restangular.one('tareas', id).remove();
   }
 
   addTarea(tarea: Tarea): Observable<Response> {

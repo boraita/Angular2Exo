@@ -6,7 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { MdCoreModule } from '@angular/material/core';
 
 // Librerias externas
-// import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { RestangularModule } from 'ng2-restangular';
 
 // Componentes declarados de este nivel
@@ -46,7 +46,7 @@ import { LoginComponent } from './login/login.component';
     )
   ],
   // Declaración de servicios (Proveedores)
-  providers: [],
+  providers: [AUTH_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

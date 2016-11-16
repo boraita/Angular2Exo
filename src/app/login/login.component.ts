@@ -8,10 +8,11 @@ import { Http, Headers } from '@angular/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  token: string;
   constructor(private router: Router, private http: Http) { }
 
   ngOnInit() {
+    this.token = localStorage.getItem('id_token');
   }
 
   login(event, username, password) {
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     this.http.post('http://localhost:3000/session/', body, { headers: headers })
       .subscribe(
         response => {
-          localStorage.setItem('id_token', response.json());
+          let respuesta = response.json();
+          localStorage.setItem('id_token', respuesta.token);
           this.router.navigate(['tareas']);
         },
         error => {
@@ -33,9 +35,9 @@ export class LoginComponent implements OnInit {
       );
   }
 
-  signup(event) {
-    event.preventDefault();
-    this.router.navigate(['signup']);
+  logout() {
+    localStorage.clear();
+    this.token = null;
   }
 
 }

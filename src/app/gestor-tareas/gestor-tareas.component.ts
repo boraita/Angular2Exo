@@ -30,31 +30,10 @@ export class GestorTareasComponent implements OnInit {
 
     this.tareasServicio.getTareas().subscribe(response => {
       this.tareas = response;
-      console.log(response.headers);
     });
 
-    // this.tareasServicio.getTareas().subscribe(res => {
-    //     // durante la suscripción se obtienen y transforman los datos
-    //     if (res.status === 200) {
-    //       let arrayTareas = res.json() || [];
-    //       this.tareas = arrayTareas.tareas;
-    //     }else {
-    //       console.error(JSON.stringify(res));
-    //     }
-    //   });
   }
 
-// Forma local
-// submitForm(value: any): void {
-//   value.id = (new Date().getMilliseconds());
-//     this.tareas.push(value);
-//   }
-// relizado(value: any): void {
-//   let index = this.tareas.indexOf(value, 0);
-//   if (index > -1) {
-//     this.tareas.splice(index, 1);
-//   }
-//   }
 // Forma REST
 // Insertar objeto en el array
 submitForm(value: any): void {
@@ -67,15 +46,17 @@ submitForm(value: any): void {
   }
 // Quitar objeto del array
 relizado(value: any): void {
- this.tareasServicio.delTarea(value.id).subscribe(res => {
-        // durante la suscripción se obtienen y transforman los datos
-        if (res.status === 200) {
-          let arrayTareas = res.json() || [];
-          this.tareas = arrayTareas.tareas;
-        }else {
-          console.error(JSON.stringify(res));
-        }
-      });
+
+console.log(this.tareasServicio.delTarea(value.id));
+
+//  .subscribe(res => {
+//         // durante la suscripción se obtienen y transforman los datos
+//         if  (res === 'OK') {
+//           delete this.tareas[value.id];
+//         }else {
+//           console.error(JSON.stringify(res));
+//         }
+//       });
 }
 
   trackByFn(index, item) {
