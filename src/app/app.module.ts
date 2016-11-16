@@ -3,22 +3,21 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
-import { MdCoreModule } from '@angular/material/core';
 
 // Librerias externas
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { RestangularModule } from 'ng2-restangular';
 
 // Componentes declarados de este nivel
 import { AppComponent } from './app.component';
-import { NuevoComponentComponent } from './nuevo-component/nuevo-component.component';
-import { SimpleFormComponent } from './nuevo-component/simple-form/simple-form.component';
-import { DificilFormComponent } from './nuevo-component/dificil-form/dificil-form.component';
 import { AppRoutingModule } from './app.routes';
+
+// componentes externos
+import { NuevoComponentComponent, SimpleFormComponent, DificilFormComponent } from './nuevo-component';
+import { LoginComponent } from './login/login.component';
 
 // Modulos del componente
 import { GestorTareasModule } from './gestor-tareas/gestor-tareas.module';
-import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   // Componentes que se deen utilizar
@@ -36,7 +35,6 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    MdCoreModule,
     AppRoutingModule,
     GestorTareasModule,
     RestangularModule.forRoot((RestangularProvider) => {
@@ -46,7 +44,7 @@ import { LoginComponent } from './login/login.component';
     )
   ],
   // Declaración de servicios (Proveedores)
-  providers: [AUTH_PROVIDERS],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SecurityService } from '../security.service';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 
 import { GestorTareasComponent } from './gestor-tareas.component';
@@ -15,7 +16,7 @@ import { OrderByPipe } from './order-by.pipe';
 @NgModule({
   imports: [CommonModule, MaterialModule.forRoot(), FormsModule, ReactiveFormsModule, GestorTareasRoutingModule],
   declarations: [GestorTareasComponent, OrderByPipe],
-  providers: [GestorTareasService, SecurityService],
+  providers: [AUTH_PROVIDERS, GestorTareasService, SecurityService],
 
 })
 export class GestorTareasModule { }
