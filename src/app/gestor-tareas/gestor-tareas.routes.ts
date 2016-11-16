@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Seguridad con JWT
-import { SecurityService } from '../security.service';
+import { SecurityService } from '../shared';
 
 // Nuevas rutas
 import { GestorTareasComponent } from './gestor-tareas.component';

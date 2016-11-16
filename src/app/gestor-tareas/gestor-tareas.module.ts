@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SecurityService } from '../security.service';
+import { SecurityService } from '../shared';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 
